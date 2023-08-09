@@ -37,7 +37,11 @@ function renderQuote(quoteObj){
     likeBtn.append(span)
 
     deleteBtn.addEventListener("click", () => {
-        li.remove()
+        fetch(`${url}/quotes/${quoteObj.id}`, {
+            method: "DELETE"
+        })
+        .then(res => res.json())
+        .then(data => li.remove())
     })
 }
 
